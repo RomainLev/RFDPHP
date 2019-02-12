@@ -1,16 +1,33 @@
-<ul>
-    <li><a href="index.php?page=truc">Truc</a></li>
-    <li><a href="index.php?page=machin">Machin</a></li>
-    <li><a href="index.php?page=michel">Michel</a></li>
-</ul>
 <?php
+include "./includes/header.php";
 
-if (isset($_GET['page'])) {
+if (isset($_GET['page'])){
     $page = $_GET['page'];
 }
 
 else {
-    $page = "Message";
+    $page = "accueil";
 }
 
-echo $page;
+//$page = isset($_GET['page']) ? $_GET['page'] : "accueil";    operateur termer
+
+
+$path = "./includes/";
+$contenu = glob($path . "*.inc.php");
+$page = $path . $page . ".inc.php";
+
+if (in_array($page, $contenu)) {
+    include $page;
+}
+
+else {
+    include "./include/accueil.inc.php";
+}
+
+var_dump($contenu);
+
+
+
+include "./includes/footer.php";
+
+
