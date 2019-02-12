@@ -7,9 +7,10 @@
 
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
-    echo $page;
 }
 
 else {
-    echo "Message";
+    $page = "Message";
 }
+
+echo $page;
